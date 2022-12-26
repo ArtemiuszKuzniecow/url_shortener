@@ -4,7 +4,7 @@ import { useRoutes } from "react-router-dom";
 import { routes } from "./routes";
 
 function App() {
-  const elements = useRoutes(routes(true));
+  const elements = useRoutes(routes(false));
   return <div className="container">{elements}</div>;
 }
 
