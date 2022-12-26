@@ -1,12 +1,25 @@
 import * as React from "react";
+import { useHttp } from "../hooks/http.hook";
 import "../index.css";
 
 const AuthPage = () => {
+  const { loading, error, request } = useHttp();
   const [form, setForm] = React.useState({ email: "", password: "" });
 
   const changeHandler = (event: React.SyntheticEvent) => {
     const target = event.target as HTMLInputElement;
     setForm({ ...form, [target?.name]: target?.value });
+  };
+
+  const registerHandler = async () => {
+    try {
+      const data = await request(
+        "/api/auth/register",
+        "POST",
+        { ...form },
+        Headers
+      );
+    } catch (error) {}
   };
 
   return (
@@ -41,8 +54,19 @@ const AuthPage = () => {
           </div>
 
           <div className="card-action">
-            <button className="btn yellow darken-4 login-button">Login</button>
-            <button className="btn grey ligthen-1 black-text">Sign Up</button>
+            <button
+              className="btn yellow darken-4 login-button"
+              disabled={loading}
+            >
+              Login
+            </button>
+            <button
+              className="btn grey ligthen-1 black-text"
+              disabled={loading}
+              onClick={registerHandler}
+            >
+              Sign Up
+            </button>
           </div>
         </div>
       </div>
