@@ -1,0 +1,5 @@
+{
+  "port": 8080,
+  "mongoUri": "mongodb+srv://artemiuszkuzniecow:URL_shortener_56@cluster0.kuvbp23.mongodb.net/url_shortener?retryWrites=true&w=majority",
+  "jwtSecret": "url_shortener_jwt_secret"
+}
