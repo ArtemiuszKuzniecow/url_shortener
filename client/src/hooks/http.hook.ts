@@ -34,9 +34,9 @@ export const useHttp = () => {
     []
   );
 
-  const cleanError = () => {
+  const cleanError = React.useCallback(() => {
     setError(null);
-  };
+  }, []);
 
   return {
     loading,

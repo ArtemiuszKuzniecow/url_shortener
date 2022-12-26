@@ -25,18 +25,18 @@ router.post(
         });
       }
 
-      const { email, password } = req.body;
+      const { name, email, password } = req.body;
       const candidate = await User.findOne({ email });
       if (candidate) {
         return res.status(400).json({ message: "The user already exists" });
       }
       const hashedPassword = await bcrypt.hash(password, 12);
 
-      const user = new User({ email, password: hashedPassword });
+      const user = new User({ name, email, password: hashedPassword });
 
       await user.save();
 
-      res.status(201).json({ message: "User has been created" });
+      res.status(201).json({ message: `Hello, ${name}! Welcome!` });
     } catch (error) {
       res.status(500).json({ message: "Something went wrong, try it later" });
     }
@@ -60,6 +60,7 @@ router.post(
       }
 
       const { email, password } = req.body;
+
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -78,7 +79,7 @@ router.post(
         expiresIn: "1h",
       });
 
-      res.json({ token, userId });
+      res.json({ token, userId: user.id });
     } catch (error) {
       res.status(500).json({ message: "Something went wrong, try it later" });
     }
