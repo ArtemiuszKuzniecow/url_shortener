@@ -18,6 +18,10 @@ const AuthPage = () => {
     cleanError();
   }, [error, message, cleanError]);
 
+  React.useEffect(() => {
+    window.M.updateTextFields();
+  }, []);
+
   const changeHandler = (event: React.SyntheticEvent) => {
     const target = event.target as HTMLInputElement;
     setForm({ ...form, [target?.name]: target?.value });
