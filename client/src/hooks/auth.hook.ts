@@ -7,9 +7,12 @@ const useAuth = () => {
 
   const login = React.useCallback((jwtToken: string, id: string) => {
     setToken(jwtToken);
-    setUserId(id);
+    setUserId(userId);
 
-    localStorage.setItem(constants.token, JSON.stringify({ userId, token }));
+    localStorage.setItem(
+      constants.token,
+      JSON.stringify({ userId: id, token: jwtToken })
+    );
   }, []);
 
   const logout = React.useCallback(() => {

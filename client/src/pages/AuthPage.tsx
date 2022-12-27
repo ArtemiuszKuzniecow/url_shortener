@@ -1,9 +1,11 @@
 import * as React from "react";
+import { AuthContext } from "../context/AuthContext";
 import useHttp from "../hooks/http.hook";
 import useMessage from "../hooks/message.hook";
 import "../index.css";
 
 const AuthPage = () => {
+  const auth = React.useContext(AuthContext);
   const message = useMessage();
   const { loading, error, request, cleanError } = useHttp();
   const [form, setForm] = React.useState({ name: "", email: "", password: "" });
@@ -40,6 +42,7 @@ const AuthPage = () => {
         { email: form.email, password: form.password },
         Headers
       );
+      auth.login(data.token, data.userId);
     } catch (error) {}
   };
 

@@ -1,10 +1,14 @@
-import { noop } from "jquery";
 import * as React from "react";
+import { IAuth } from "../models/models";
 
-export const AuthContext = React.createContext({
+const noop = () => {
+  return;
+};
+
+export const AuthContext = React.createContext<IAuth>({
   token: null,
+  login: noop,
+  logout: noop,
   userId: null,
-  login: noop(),
-  logout: noop(),
-  isAuthentificated: false,
+  isAuthenticated: false,
 });
