@@ -5,8 +5,8 @@ import CreatePage from "./pages/CreatePage";
 import DetailPage from "./pages/DetailPage";
 import LinksPage from "./pages/LinksPage";
 
-export const routes = (isAuthentificated: boolean) => {
-  if (isAuthentificated) {
+export const routes = (isAuthenticated: boolean) => {
+  if (isAuthenticated) {
     return [
       {
         path: "/links",

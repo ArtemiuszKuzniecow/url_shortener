@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const useHttp = () => {
+const useHttp = () => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
 
@@ -45,3 +45,5 @@ export const useHttp = () => {
     cleanError,
   };
 };
+
+export default useHttp;

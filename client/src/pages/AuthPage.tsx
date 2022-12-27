@@ -1,9 +1,11 @@
 import * as React from "react";
-import { useHttp } from "../hooks/http.hook";
+import { AuthContext } from "../context/AuthContext";
+import useHttp from "../hooks/http.hook";
 import useMessage from "../hooks/message.hook";
 import "../index.css";
 
 const AuthPage = () => {
+  const auth = React.useContext(AuthContext);
   const message = useMessage();
   const { loading, error, request, cleanError } = useHttp();
   const [form, setForm] = React.useState({ name: "", email: "", password: "" });
@@ -40,6 +42,7 @@ const AuthPage = () => {
         { email: form.email, password: form.password },
         Headers
       );
+      auth.login(data.token, data.userId);
     } catch (error) {}
   };
 
@@ -86,9 +89,9 @@ const AuthPage = () => {
 
           <div className="card-action">
             {isLogin && (
-              <>
+              <div className="center-align">
                 <button
-                  className="btn yellow darken-4 login-button"
+                  className="btn yellow darken-4"
                   disabled={loading}
                   onClick={loginHandler}
                 >
@@ -99,20 +102,34 @@ const AuthPage = () => {
                   <a
                     href="#"
                     onClick={() => setIsLogin((prevState) => !prevState)}
+                    className="link"
                   >
                     Sign Up
                   </a>
                 </p>
-              </>
+              </div>
             )}
             {!isLogin && (
-              <button
-                className="btn grey ligthen-1 black-text"
-                disabled={loading}
-                onClick={registerHandler}
-              >
-                Sign Up
-              </button>
+              <div className="container">
+                <button
+                  className="btn grey ligthen-1 black-text"
+                  disabled={loading}
+                  onClick={registerHandler}
+                >
+                  Sign Up
+                </button>
+                <br />
+                <p className="white-text">
+                  If you have an account you can{" "}
+                  <a
+                    href="#"
+                    onClick={() => setIsLogin((prevState) => !prevState)}
+                    className="link"
+                  >
+                    LOGIN
+                  </a>
+                </p>
+              </div>
             )}
           </div>
         </div>
