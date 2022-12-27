@@ -20,7 +20,7 @@ const Navbar = () => {
         <nav>
           <div className="nav-wrapper grey darken-2">
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
-              <img src={hamburger} width={40} style={{ margin: 5 }} />
+              <img src={hamburger} width={40} style={{ marginTop: 10 }} />
             </a>
             <span className="brand-logo">URL shortener</span>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
