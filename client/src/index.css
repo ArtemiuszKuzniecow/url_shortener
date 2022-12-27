@@ -17,3 +17,8 @@ input.text-field:focus {
 .link {
   margin: 0 !important;
 }
+
+.create-page-padding {
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
