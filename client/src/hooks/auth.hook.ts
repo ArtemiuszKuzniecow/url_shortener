@@ -3,6 +3,7 @@ import constants from "../constants.json";
 
 const useAuth = () => {
   const [token, setToken] = React.useState<null | string>(null);
+  const [ready, setReady] = React.useState<boolean>(false);
   const [userId, setUserId] = React.useState<null | string>(null);
 
   const login = React.useCallback((jwtToken: string, id: string) => {
@@ -27,9 +28,10 @@ const useAuth = () => {
     if (data && data.token) {
       login(data.token, data.userId);
     }
+    setReady(true);
   }, [login]);
 
-  return { login, logout, token, userId };
+  return { login, logout, token, userId, ready };
 };
 
 export default useAuth;
