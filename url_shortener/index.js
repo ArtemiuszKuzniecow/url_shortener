@@ -11,6 +11,7 @@ app.use(express.json({ extended: true }));
 app.use(cors());
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/link", require("./routes/link.routes"));
+app.use("/t/", require("./routes/redirect.route"));
 
 const staticPath = path.resolve(__dirname, "client");
 

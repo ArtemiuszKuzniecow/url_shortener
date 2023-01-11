@@ -7,7 +7,7 @@ const LinkCard = ({ ...link }: ILink) => {
       <h2>Your link</h2>
       <p>
         Your link:{" "}
-        <a href={link.to} target="_blank" rel="noopener noreferrer">
+        <a href={link.from} target="_blank" rel="noopener noreferrer">
           {link.to}
         </a>
       </p>
