@@ -19,8 +19,6 @@ const LinksPage = () => {
     } catch (error) {}
   }, [token, request]);
 
-  console.log(links);
-
   React.useEffect(() => {
     fetchLinks();
   }, [fetchLinks]);

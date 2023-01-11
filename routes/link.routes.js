@@ -42,7 +42,7 @@ router.get("/", auth, async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const links = findById(req.params.id);
+    const links = await Link.findById(req.params.id);
     res.json(links);
   } catch (error) {
     res.status(500).json({ message: "Something went wrong, try it later" });
