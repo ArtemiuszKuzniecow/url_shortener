@@ -5,6 +5,7 @@ const router = Router();
 router.get("/:code", async (req, res) => {
   try {
     const link = await Link.findOne({ code: req.params.code });
+
     if (link) {
       link.clicks++;
       await link.save();
