@@ -1,0 +1,43 @@
+{
+  "name": "url_shortener",
+  "version": "1.0.0",
+  "description": "URL shortener",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run serve\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtemiuszKuzniecow/url_shortener.git"
+  },
+  "keywords": [
+    "Mongo",
+    "Express",
+    "React",
+    "Node"
+  ],
+  "author": "Artemiusz Kuzniecow <artemiuszkuzniecow@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtemiuszKuzniecow/url_shortener/issues"
+  },
+  "homepage": "https://github.com/ArtemiuszKuzniecow/url_shortener#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "chalk": "^4.1.2",
+    "config": "^3.3.8",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.1",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
+  }
+}
