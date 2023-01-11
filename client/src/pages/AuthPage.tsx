@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import useHttp from "../hooks/http.hook";
 import useMessage from "../hooks/message.hook";
@@ -7,6 +8,7 @@ import "../index.css";
 const AuthPage = () => {
   const auth = React.useContext(AuthContext);
   const message = useMessage();
+  const navigate = useNavigate();
   const { loading, error, request, cleanError } = useHttp();
   const [form, setForm] = React.useState({ name: "", email: "", password: "" });
   const [isLogin, setIsLogin] = React.useState(true);
@@ -27,17 +29,6 @@ const AuthPage = () => {
     setForm({ ...form, [target?.name]: target?.value });
   };
 
-  const registerHandler = async () => {
-    try {
-      const data = await request(
-        "/api/auth/register",
-        "POST",
-        { ...form },
-        Headers
-      );
-      message(data.message);
-    } catch (error) {}
-  };
   const loginHandler = async () => {
     try {
       const data = await request(
@@ -47,6 +38,19 @@ const AuthPage = () => {
         Headers
       );
       auth.login(data.token, data.userId);
+    } catch (error) {}
+  };
+
+  const registerHandler = async () => {
+    try {
+      const data = await request(
+        "/api/auth/register",
+        "POST",
+        { ...form },
+        Headers
+      );
+      message(data.message);
+      loginHandler();
     } catch (error) {}
   };
 
